@@ -10,7 +10,7 @@ export default function Dictionary() {
   function handleResponse(response) {
     //console.log(response.data[0]);
     //console.log(response.data[0].meanings[0].definition[0].definition);
-    setResults(response.data[0]);
+    setResults(response.data.meanings);
   }
   function search(event) {
     event.preventDefault();
