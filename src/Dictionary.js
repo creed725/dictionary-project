@@ -23,7 +23,14 @@ export default function Dictionary(props) {
     // documentation: https://www.shecodes.io/learn/apis/dictionary
     let apiKey = `40bdb8c3a26579atfoa8a2d376def906`;
     let apiUrl = `https://api.shecodes.io/dictionary/v1/define?word=${keyword}&key=${apiKey}`;
-    axios.get(apiUrl).then(handleDictionResponse);
+    axios
+      .get(apiUrl)
+      .then(handleDictionResponse)
+      .catch((error) => {
+        //If the word is invalid or not found, set results to null so the application does not crash
+        setResults(null);
+        console.log("Word not found:", error);
+      });
 
     let pexelsApiKey =
       "GbcuvCod3hvE4ZFVR3K2gUKHNHMPPGr6mmSMn7ffmVJZNybc2BIWcJkW";
